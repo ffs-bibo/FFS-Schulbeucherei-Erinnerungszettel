@@ -1,0 +1,11 @@
+\documentclass[a4paper]{article}
+\usepackage{pdfpages}
+\usepackage{geometry}
+
+\geometry{top=0mm, bottom=0mm, left=0mm, right=0mm}
+
+\begin{document}
+	\includepdf[width=0.999\paperwidth,pages=1,pagecommand={\thispagestyle{empty}},offset=0 7.4cm]{Erinnerung.pdf}
+	\newpage
+	\includepdf[width=0.999\paperwidth,pages=1,pagecommand={\thispagestyle{empty}},angle=180,offset=0 -7.4cm]{Erinnerung.pdf}
+\end{document}
