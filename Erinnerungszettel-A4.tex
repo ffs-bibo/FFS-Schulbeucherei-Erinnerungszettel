@@ -1,11 +1,20 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,0pt]{article}
 \usepackage{pdfpages}
-\usepackage{geometry}
+\usepackage{tikz}
+\usepackage[a4paper,margin=0pt]{geometry}
+\usepackage{tikzducks}
 
 \geometry{top=0mm, bottom=0mm, left=0mm, right=0mm}
 
+\AddToShipoutPictureBG{
+	\begin{tikzpicture}[remember picture,overlay]
+		% Linie für die Falz
+		\draw[dotted,line width=1pt,gray](current page.west) -- (current page.east);
+	\end{tikzpicture}
+}
 \begin{document}
 	\includepdf[width=0.999\paperwidth,pages=1,pagecommand={\thispagestyle{empty}},offset=0 7.4cm]{Erinnerung.pdf}
 	\newpage
+
 	\includepdf[width=0.999\paperwidth,pages=1,pagecommand={\thispagestyle{empty}},angle=180,offset=0 -7.4cm]{Erinnerung.pdf}
 \end{document}
