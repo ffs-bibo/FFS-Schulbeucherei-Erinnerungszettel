@@ -1,0 +1,84 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+% !TEX TS-program = lualatex
+\ifdefined\directlua\else
+    \errmessage{LuaTeX is required to typeset this document}
+    \csname @@end\expandafter\endcsname
+\fi
+\documentclass[
+	version=last,
+	fontsize=12pt,
+	parskip=half,
+	sfdefaults=true,
+	usegeometry
+]{scrartcl}
+\usepackage[a4paper, margin=0.8cm]{geometry}
+\usepackage{polyglossia}
+\setmainlanguage[spelling=new,variant=german]{german}
+\usepackage{libertine}
+\usepackage{microtype}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{csquotes}
+\usepackage{calligra}
+\setromanfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmainfont{Linux Biolinum O}
+\newfontfamily\gorri{Gorri Sans}
+\defaultfontfeatures[\gorri]{Ligatures=TeX,Renderer=HarfBuzz}
+\usetikzlibrary{positioning,fit,calc,spath3,shapes.callouts,backgrounds}
+
+\definecolor{linkclr}{rgb}{0, 0, 0}
+\hypersetup{
+	pdfauthor={Oliver Schneider},
+	pdftitle={Schulbücherei FFS, Erinnerungszettel, Anleitung},
+	pdfsubject={Anleitung für den Erinnerungszettel für die Schulbücherei der Friedrich-Fröbel-Schule in Frankfurt/Niederrad},
+	pdfkeywords={Bibliothek,Bücherei,Mahnung,Erinnerung}
+	unicode,
+	bookmarksnumbered=false,
+	breaklinks=false,
+	colorlinks=true,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	menucolor=black,
+	urlcolor=linkclr,
+}
+
+\titleformat{\section}[block]{\normalfont\huge\scshape\bfseries\centering}{\thesection}{1em}{}
+\titleformat{\subsection}[block]{\normalfont\large\scshape\bfseries\centering}{\thesubsection}{1em}{}
+%\usepackage{lua-visual-debug}
+%\usepackage{showframe}
+
+\tikzset{
+	filledfield/.style={yshift=4pt,draw=none,font=\large\bfseries,text opacity=100,text=gray}
+}
+\newcommand{\filledfield}[1]{{\gorri\Large#1}}
+\input{tikz-details.tex}
+
+\begin{document}
+\section*{Ausfüllanleitung}
+
+\begin{enumerate}
+	\item Ist dies die erste Erinnerung? Wenn ja, an Durchschlag denken!
+	\item Wievielte Erinnerung? Eintragen auf gepunkteter Linie vor \enquote{Erinnerung}.
+	\begin{itemize}
+		\item Bei zweiter oder weiterer Erinnerung bitte \emph{aktuelles Datum} und \emph{wievielte Erinnerung} auf dem Durchschlag der ersten Erinnerung nachtragen.
+	\end{itemize}
+	\item Datum eintragen
+	\item Name (Nachname, Vornamen) in Feld \enquote{An} eintragen, bspw. \enquote{Klawitter, Conni}
+	\item Klasse, bspw. \enquote{4a}, und Name des Klassenlehrers, bspw. \enquote{Ms. Braitwhistle}, eintragen
+	\item Vornamen für Anrede im Feld \enquote{Liebe/r} eintragen, bspw. \enquote{Conni}
+	\item Titel und Karteinummern der gemahnten Bücher im gestrichelten Kasten eintragen
+\end{enumerate}
+
+
+\section*{\makebox[1em]{\normalsize\textcolor{gray}{\filledfield{\Huge 3.}}}~Erinnerung}
+\vspace*{-1ex}
+\subsection*{Schulbücherei der Friedrich-Fröbel-Schule, Niederrad}
+
+\input{tikz-erinnerung.tex}
+\end{document}

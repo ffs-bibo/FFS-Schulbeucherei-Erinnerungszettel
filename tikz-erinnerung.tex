@@ -1,0 +1,59 @@
+\begin{tikzpicture}[text width=\textwidth,anchor=text]
+	\begin{scope}[text width=0.7\textwidth,node distance=1ex]
+		\node[field] (Datum) {Datum:~\textcolor{gray}{\dotfill}};
+		\node[filledfield,right=of Datum.west] {\phantom{Datum:}~\filledfield{30.2.2222}};
+
+		\node[field,below=of Datum] (Adressat) {An:~\textcolor{gray}{\dotfill}};
+		\node[filledfield,right=of Adressat.west] {\phantom{An:}~\filledfield{Klawitter, Conni}};
+
+		\node[field,below=of Adressat] (Klassenlehrer) {\makebox[5.5em]{Klasse:~\textcolor{gray}{\dotfill}}~Lehrer/in:~\textcolor{gray}{\dotfill}};
+		\node[filledfield,right=of Klassenlehrer.west] {\makebox[5.5em]{\phantom{Klasse:}\filledfield{4a}}~\phantom{Lehrer/in:}~\filledfield{Ms. Braitwhistle}};
+
+		\node[field,below=of Klassenlehrer] (Anrede) {Liebe/r~\textcolor{gray}{\dotfill}};
+		\node[filledfield,right=of Anrede.west] {\phantom{Liebe/r}~\filledfield{Conni}};
+
+		\node[fit=(Datum)(Adressat)(Klassenlehrer)(Anrede)](Felder) {};
+	\end{scope}
+
+	% Bücherwurm
+	\begin{scope}[overlay]
+		\node[right=0px of Felder.east,yshift=0.5cm] {\includegraphics[width=0.25\textwidth]{bookworm.pdf}};
+	\end{scope}
+
+	\begin{scope}[text width=0.39\textwidth,node distance=1ex,anchor=north west]
+		\node[fliesstext,below right=of Felder.south west,align=justify]
+			(Buchlistenverweis)
+			{Du hast folgendes Buch bei uns ausgeliehen und leider nicht rechtzeitig zurückgegeben:};
+
+		\node[fliesstext,below=2ex of Buchlistenverweis,align=justify]
+			(Bitte)
+			{Bitte bringe das Buch so schnell wie möglich zurück in die Schulbücherei.};
+
+		\node[fliesstext,below=2ex of Bitte,align=justify]
+			(Verlaengerung)
+			{Falls du es noch nicht fertig gelesen hast, verlängern wir gerne deine Ausleihzeit.};
+
+		\node[fliesstext,below=2ex of Verlaengerung,align=right]
+			(Gruss)
+			{Dein freundliches Büchereiteam};
+		\node[fit=(Buchlistenverweis)(Bitte)(Verlaengerung)(Gruss)](Erinnerungstext) {};
+	\end{scope}
+
+	\begin{scope}[text width=0.56\textwidth,node distance=1ex,anchor=north west]
+		\node[right=0mm of Erinnerungstext.north east,buchdetails] (Buchdetails) {
+			{\scriptsize Buchtitel und Karteinummer, ggf. mehrere auf einmal}
+		};
+		\coordinate (linestart) at ($(Buchdetails.north west) + (1em, 0)$);
+		\coordinate (lineend) at ($(Buchdetails.north east) + (-1em, 0)$);
+		% Lines
+		\path[schreiblinie] ($(linestart) - (0,1.25cm)$) -- ($(lineend) - (0,1.25cm)$);
+		\path[schreiblinie] ($(linestart) - (0,2.5cm)$) -- ($(lineend) - (0,2.5cm)$);
+		\path[schreiblinie] ($(linestart) - (0,3.75cm)$) -- ($(lineend) - (0,3.75cm)$);
+		\path[schreiblinie] ($(linestart) - (0,5cm)$) -- ($(lineend) - (0,5cm)$);
+		\path[schreiblinie] ($(linestart) - (0,6.25cm)$) -- ($(lineend) - (0,6.25cm)$);
+
+		\node[filledfield,right=of linestart,yshift=-1.15cm,xshift=-1em] {\filledfield{\normalsize Die fabelhafte Miss Braitwhistle (12-3456)}};
+
+		\node[filledfield,right=of linestart,yshift=-2.35cm,xshift=-1em] {\filledfield{\normalsize Hella Pfefferkessel (98-76543)}};
+	\end{scope}
+\end{tikzpicture}
